@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="De8UUrQEHuEf3l4CkcC-iVi6y4tdy5Wsm_i9Zp4vGsA"><meta name="description" content="Kotlin学习-基础篇        本文是本人在学习 Koitlin 期间记录的一些知识点，仅作参考，如有错误，欢迎指正                      1、变量       val (value的简写) 用来声明一个不可变的变量，对应Java中的 final 变量var (variable的简写) 用来声明一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一一篇">
+<meta property="og:url" content="http://example.com/2021/03/06/%E7%AC%AC%E4%B8%80%E4%B8%80%E7%AF%87/index.html">
+<meta property="og:site_name" content="Muppet&#39;s Blog">
+<meta property="og:description" content="Kotlin学习-基础篇        本文是本人在学习 Koitlin 期间记录的一些知识点，仅作参考，如有错误，欢迎指正                      1、变量       val (value的简写) 用来声明一个不可变的变量，对应Java中的 final 变量var (variable的简写) 用来声明一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b51ce98510514b319952f3713eba566c~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2021-03-06T11:43:48.000Z">
+<meta property="article:modified_time" content="2021-03-07T09:36:53.977Z">
+<meta property="article:author" content="MuppetWizard">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b51ce98510514b319952f3713eba566c~tplv-k3u1fbpfcp-watermark.image"><title>第一一篇 | Muppet's Blog</title><link ref="canonical" href="http://example.com/2021/03/06/%E7%AC%AC%E4%B8%80%E4%B8%80%E7%AF%87/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><script src="https://www.googletagmanager.com/gtag/js?id=G-QCPWF6B705" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-QCPWF6B705');
+}</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-map-signs"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">第一一篇</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-03-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-03-07</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">2.1k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">14分</span></span></div></header><div class="post-body"><p>
+        <img class="lazyload lazyload-gif" src="/images/loading.svg" data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b51ce98510514b319952f3713eba566c~tplv-k3u1fbpfcp-watermark.image">
+      </p>
+
+        <h1 id="Kotlin学习-基础篇">
+          <a href="#Kotlin学习-基础篇" class="heading-link"><i class="fas fa-link"></i></a><a href="#Kotlin学习-基础篇" class="headerlink" title="Kotlin学习-基础篇"></a>Kotlin学习-基础篇</h1>
+      <blockquote>
+<p>本文是本人在学习 Koitlin 期间记录的一些知识点，仅作参考，如有错误，欢迎指正</p>
+</blockquote>
+
+        <h2 id="1、变量">
+          <a href="#1、变量" class="heading-link"><i class="fas fa-link"></i></a><a href="#1、变量" class="headerlink" title="1、变量"></a>1、变量</h2>
+      <p><code>val</code> (value的简写) 用来声明一个不可变的变量，对应Java中的 <code>final</code> 变量<br><code>var</code> (variable的简写) 用来声明一个可变的变量，对应Java中的非 <code>final</code> 变量  </p>
+<span id="more"></span>
+<p>当Kotlin无法自动推导变量类型时，需要显示声明变量类型，如：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> a: <span class="built_in">Int</span> = <span class="number">10</span></span><br></pre></td></tr></tbody></table></div></figure>
+<p>Java和Kotlin数据类型对照表：<br>| Java基本数据类型 | Kotlin对象数据类型 | 数据类型说明 |<br>| :————: | :—————-: | :———: |<br>| int | Int | 整型 |<br>| long | Long | 长整型 |<br>| short | Short | 短整型 |<br>| float | Float | 单精度浮点型 |<br>| double | Double | 双精度浮点型 |<br>| boolean | Boolean | 布尔型 |<br>| char | Char | 字符型 |<br>| byte | Byte | 字节型 |</p>
+
+        <h3 id="变量延迟初始化">
+          <a href="#变量延迟初始化" class="heading-link"><i class="fas fa-link"></i></a><a href="#变量延迟初始化" class="headerlink" title="变量延迟初始化"></a>变量延迟初始化</h3>
+      <p><code>lateinit</code>可以告诉<code>Kotlin</code>编译器我会晚些时候对其进行初始化，避免一开始声明变量时需赋值为空，示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Class1</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> params: Params</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">doSomthing</span><span class="params">()</span></span>{</span><br><span class="line">        <span class="keyword">if</span>(!::params.isInitialized){</span><br><span class="line">        params = Params(...)</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>为了避免因变量没有初始化导致程序崩溃，故通过，<code>::params.isInitialized</code>来判断变量是否已经初始化</p>
+
+        <h2 id="2、函数">
+          <a href="#2、函数" class="heading-link"><i class="fas fa-link"></i></a><a href="#2、函数" class="headerlink" title="2、函数"></a>2、函数</h2>
+      <p>自定义函数，语法规则如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">methodName</span><span class="params">(param1:<span class="type">Int</span>, param2:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>{</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">//Kotlin函数语法糖,当函数只有一行代码时，可省去return关键字，等号可表示返回值的意思</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">methodName</span><span class="params">(param1:<span class="type">Int</span>, param2:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span> = <span class="number">0</span></span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h2 id="3、if-条件语句">
+          <a href="#3、if-条件语句" class="heading-link"><i class="fas fa-link"></i></a><a href="#3、if-条件语句" class="headerlink" title="3、if 条件语句"></a>3、if 条件语句</h2>
+      <p><code>Kotlin</code> 中的 <code>if</code>  语句相比于 Java 有一个额外功能，它可以有返回值<br><code>if</code> 语句中每一个条件中最后一行代码可作为返回值，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">methodName</span><span class="params">(param1:<span class="type">Int</span>, param2:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span>{</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">if</span>(param1 &gt; param2){</span><br><span class="line">        param1</span><br><span class="line">    } <span class="keyword">else</span>{</span><br><span class="line">        param2</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">//Kotlin语法糖..简化为</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">methodName</span><span class="params">(param1:<span class="type">Int</span>, param2:<span class="type">Int</span>)</span></span>:<span class="built_in">Int</span> = <span class="keyword">if</span> (param1 &gt; param2) param1 <span class="keyword">else</span> param2</span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h2 id="4、when-条件语句">
+          <a href="#4、when-条件语句" class="heading-link"><i class="fas fa-link"></i></a><a href="#4、when-条件语句" class="headerlink" title="4、when 条件语句"></a>4、when 条件语句</h2>
+      <p><code>when</code>语句允许掺入一个任意类型的参数，然后可以在<code>when</code>的结构体中定义一系列条件。<br>格式为：  </p>
+<figure class="highlight plain"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">匹配值 -&gt; {执行逻辑}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>示例，不同学生对应不同分数：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getScore</span><span class="params">(name:<span class="type">String</span>)</span></span> = <span class="keyword">when</span>(name){</span><br><span class="line">    <span class="string">"Tom"</span> -&gt; <span class="number">60</span></span><br><span class="line">    <span class="string">"Jim"</span> -&gt; <span class="number">30</span></span><br><span class="line">    <span class="string">"Tommy"</span> -&gt; <span class="number">50</span></span><br><span class="line">    <span class="string">"Lily"</span> -&gt; <span class="number">70</span></span><br><span class="line">    <span class="keyword">else</span> -&gt; <span class="number">0</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">//当执行逻辑里只有一行代码时可省去{}，且when语句也将最后一行作为返回值</span></span><br></pre></td></tr></tbody></table></div></figure>
+<p><code>when</code> 不带参数的用法，示例：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getScore</span><span class="params">(name:<span class="type">String</span>)</span></span> = <span class="keyword">when</span>{</span><br><span class="line">    name == <span class="string">"Tom"</span> -&gt; <span class="number">60</span></span><br><span class="line">    name == <span class="string">"Jim"</span> -&gt; <span class="number">30</span></span><br><span class="line">    name == <span class="string">"Tommy"</span> -&gt; <span class="number">50</span></span><br><span class="line">    name == <span class="string">"Lily"</span> -&gt; <span class="number">70</span></span><br><span class="line"><span class="comment">//    name.startWith("Tom") -&gt; 80 //将以Tom开头的名字，分数都为80</span></span><br><span class="line">    <span class="keyword">else</span> -&gt; <span class="number">0</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>when语句也可用作类型匹配，示例：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">checkNumber</span><span class="params">(num:<span class="type">Number</span>)</span></span>{</span><br><span class="line">    <span class="keyword">when</span>(num){</span><br><span class="line">        <span class="keyword">is</span> <span class="built_in">Int</span> -&gt; println(<span class="string">"Number is Int"</span>)</span><br><span class="line">        <span class="keyword">is</span> <span class="built_in">Double</span> -&gt; println(<span class="string">"Number is Bouble"</span>)</span><br><span class="line">        ....</span><br><span class="line">        <span class="keyword">else</span> -&gt; (<span class="string">"Number not support"</span>)</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h2 id="5、循环语句">
+          <a href="#5、循环语句" class="heading-link"><i class="fas fa-link"></i></a><a href="#5、循环语句" class="headerlink" title="5、循环语句"></a>5、循环语句</h2>
+      
+        <h3 id="区间">
+          <a href="#区间" class="heading-link"><i class="fas fa-link"></i></a><a href="#区间" class="headerlink" title="区间"></a>区间</h3>
+      <p>Kotlin中创建一个区间：<br>双端闭区间，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> range = <span class="number">0.</span><span class="number">.10</span></span><br><span class="line"><span class="comment">//表示创建了一个从0到10 的区间，并且两端都是闭区间，数学式为[0,10]</span></span><br><span class="line"><span class="comment">//其中 .. 是创建双端闭区间的关键字</span></span><br></pre></td></tr></tbody></table></div></figure>
+<p>单端闭区间，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> range = <span class="number">0</span> until <span class="number">10</span></span><br><span class="line"><span class="comment">//表示创建了一个 从0到10的左闭右开区间，数学式为[1,10)</span></span><br><span class="line"><span class="comment">//其中 until 是创建单端闭区间的关键字</span></span><br></pre></td></tr></tbody></table></div></figure>
+<p>注意：使用 <code>..</code> 和 <code>until</code> 关键字都要求左端小于等于右端</p>
+<p>降序区间，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> range = <span class="number">10</span> downTo <span class="number">1</span></span><br><span class="line"><span class="comment">//表示创建了一个从10到1的区间，数学式表示为[10,1]</span></span><br><span class="line"><span class="comment">//downTo是创建降序区间的关键字</span></span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h3 id="for-in-循环">
+          <a href="#for-in-循环" class="heading-link"><i class="fas fa-link"></i></a><a href="#for-in-循环" class="headerlink" title="for-in 循环"></a>for-in 循环</h3>
+      <p>示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0.</span><span class="number">.10</span>){</span><br><span class="line">    ....</span><br><span class="line">}</span><br><span class="line"><span class="comment">//表示遍历这个从0到10的闭区间</span></span><br></pre></td></tr></tbody></table></div></figure>
+<p>由于 <code>for-in</code> 循环每次执行循环时区间范围递增 1，所以可使用 <code>step</code> 关键字来跳过一些元素<br>示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">0.</span><span class="number">.10</span> step <span class="number">2</span>){</span><br><span class="line">    ....</span><br><span class="line">}</span><br><span class="line"><span class="comment">//表示每次执行循环递增2</span></span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h2 id="6、面向对象">
+          <a href="#6、面向对象" class="heading-link"><i class="fas fa-link"></i></a><a href="#6、面向对象" class="headerlink" title="6、面向对象"></a>6、面向对象</h2>
+      
+        <h3 id="类与对象">
+          <a href="#类与对象" class="heading-link"><i class="fas fa-link"></i></a><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h3>
+      <p>Kotlin中创建一个对象，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span>{</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>对这个类进行实例化，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> c = ClassName()</span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h3 id="类与构造对象">
+          <a href="#类与构造对象" class="heading-link"><i class="fas fa-link"></i></a><a href="#类与构造对象" class="headerlink" title="类与构造对象"></a>类与构造对象</h3>
+      <p>在Kotlin中任何一个非抽象类默认都是不可被继承的<br>使类可以被继承，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span>{</span><br><span class="line">}</span><br><span class="line"><span class="comment">//加上open关键字使类可被继承</span></span><br></pre></td></tr></tbody></table></div></figure>
+<p>让一个类去继承另一个类，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">class1</span> : <span class="type">class2</span></span>(){</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+
+<p>Kotlin中的构造函数分为<strong>主构造函数</strong>和<strong>次构造函数</strong><br>每一个类默认都会有一个不带参数的主构造函数，可显式地指定参数。 </p>
+<p>主构造函数特点没有函数体，直接定义在类名后面即可，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">class1</span></span>(<span class="keyword">val</span> params1:String, <span class="keyword">val</span> params2:<span class="built_in">Int</span>){</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>实例化，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> c = class1(<span class="string">"Hello"</span>,<span class="number">10</span>)</span><br></pre></td></tr></tbody></table></div></figure>
+
+<p>当需要在主构造函数中编写一些逻辑时，<br>Kotlin提供了一个 <code>init</code> 结构体，可将主构造函数逻辑写在里面，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">class1</span></span>(<span class="keyword">val</span> params1:String, <span class="keyword">val</span> params2:<span class="built_in">Int</span>){</span><br><span class="line">    <span class="keyword">init</span>{</span><br><span class="line">        prinln(params1 + params2)</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+
+<p>子类的构造函数必须调用父类中的构造函数，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类</span></span><br><span class="line"><span class="keyword">open</span> <span class="class"><span class="keyword">class</span> <span class="title">Class2</span></span>(<span class="keyword">val</span> name:String, <span class="keyword">val</span> age:<span class="built_in">Int</span>){</span><br><span class="line">}</span><br><span class="line"><span class="comment">//子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Class1</span></span>(<span class="keyword">val</span> son:String, <span class="keyword">val</span> grade:<span class="built_in">Int</span>, name:String, age:<span class="built_in">Int</span>) : </span><br><span class="line">        Class2(name, age){</span><br><span class="line">}</span><br><span class="line"><span class="comment">//创建实例</span></span><br><span class="line"><span class="keyword">val</span> c = Class1(<span class="string">"a123"</span>,<span class="number">2</span>,<span class="string">"Tom"</span>,<span class="number">12</span>)</span><br></pre></td></tr></tbody></table></div></figure>
+<p>注意，在<code>Class1</code>类中不能将<code>name</code>和<code>age</code>声明成<code>val</code>，因为在主构造函数中声明成<code>var</code>或<code>val</code>的参数将自动成为该类的字段。不加任何关键字，让它的作用域仅限定在主构造函数当中即可。</p>
+<p>次构造函数<br>Kotlin规定，当一个类既有主构造函数也有次构造函数时，<strong>所有的次构造函数都必须调用主构造函数</strong>(包括间接调用)，示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Class1</span></span>(<span class="keyword">val</span> son:String, <span class="keyword">val</span> grade:<span class="built_in">Int</span>, name:String, age:<span class="built_in">Int</span>):</span><br><span class="line">        Class2(name, age){</span><br><span class="line">    <span class="keyword">constructor</span>(name:String,age:<span class="built_in">Int</span>) : <span class="keyword">this</span>(<span class="string">""</span>,<span class="number">0</span>,name,age){</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">constructor</span>():<span class="keyword">this</span>(<span class="string">""</span>,<span class="number">0</span>){</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">//分别调用构造函数进行实例化</span></span><br><span class="line"><span class="keyword">val</span> c1 = Class1()</span><br><span class="line"><span class="keyword">val</span> c2 = Class1(<span class="string">"Tom"</span>,<span class="number">19</span>)</span><br><span class="line"><span class="keyword">val</span> c3 = Class1(<span class="string">"a123"</span>,<span class="number">4</span>,<span class="string">"Tom"</span>,<span class="number">19</span>)</span><br></pre></td></tr></tbody></table></div></figure>
+<p>次构造函数通过<code>constructor</code>关键字来定义，这里定义的两个次构造函数。第一个接收的参数时<code>name</code>和<code>age</code>参数，又通过<code>this</code>关键字调用了主构造函数，并将<code>son</code>和<code>grade</code>这两个参数赋值为初始值；第二个个次构造函数不接收任何参数，通过<code>thsi</code>关键字调用了第一个次构造函数，并将参数赋值为初始值。第二个次构造函数间接调用了主构造函数，所以也是合法的.</p>
+
+        <h3 id="接口">
+          <a href="#接口" class="heading-link"><i class="fas fa-link"></i></a><a href="#接口" class="headerlink" title="接口"></a>接口</h3>
+      <p>Kotlin中让一个类实现一个接口以及实现接口中的方法，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Class1</span></span>() : Class2() , InterfaceName{</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">doSomething</span><span class="params">()</span></span>{</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>实现接口使用逗号隔开，使用<code>override</code>关键字来重写父类或者接口中的函数</p>
+<p>Kotlin中允许对接口中定义的函数进行默认实现，示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">InterfaceName</span></span>{</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">doSomething</span><span class="params">()</span></span>{</span><br><span class="line">        .....<span class="comment">//执行逻辑</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>如果接口中的函数有了函数体，这个函数体中的内容就是它的默认实现，一个类去实现该接口时，<strong>会强制要求实现没有函数体的函数，不会强制要求实现有函数体的函数，不实现时就会自动使用默认的实现逻辑。</strong></p>
+
+        <h3 id="修饰符">
+          <a href="#修饰符" class="heading-link"><i class="fas fa-link"></i></a><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3>
+      <p>Java 和 Kotlin 函数可见性修饰符对照表<br>| 修饰符 | Java | Kotlin |<br>| :—: | :—: | :—: |<br>| public | 所有类可见 | 所有类可见（默认）|<br>| private | 当前类可见 | 当前类可见 |<br>| protected | 当前类、子类、同一包路径下的类可见 | 当前类、子类可见 |<br>| default | 同一包路径下的类可见（默认） | 无 |<br>| internal | 无 | 同一模块中的类可见 |</p>
+
+        <h3 id="数据类与单例类">
+          <a href="#数据类与单例类" class="heading-link"><i class="fas fa-link"></i></a><a href="#数据类与单例类" class="headerlink" title="数据类与单例类"></a>数据类与单例类</h3>
+      <p>数据类用于将服务器端或数据库中的数据映射到内存中，为编程逻辑提供数据模型的支持。<br>Kotlin中创建数据类，示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">Cellphone</span></span>(<span class="keyword">val</span> brand:String, <span class="keyword">val</span> price:<span class="built_in">Double</span>)</span><br><span class="line"><span class="comment">//使用上面这个数据类，如下</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> {</span><br><span class="line">    <span class="keyword">val</span> cellphone1 = Cellphone(<span class="string">"Samsung"</span>, <span class="string">"1299.99"</span>)</span><br><span class="line">    <span class="keyword">val</span> cellphone2 = Cellphone(<span class="string">"Samsung"</span>, <span class="string">"1299.99"</span>)</span><br><span class="line">    println(cellphone1)</span><br><span class="line">    println(<span class="string">"cellphone1 equals cellphone2"</span>+(cellphone1 == cellphone2))</span><br><span class="line">}</span><br><span class="line"><span class="comment">//运行结果为</span></span><br><span class="line"><span class="comment">//Cellphone(brand=Samsung, price=1299.99)</span></span><br><span class="line"><span class="comment">//cellphone1 equals cellphone2 true</span></span><br></pre></td></tr></tbody></table></div></figure>
+<p>当在一个类前面声明<code>data</code>关键字时，便表明你希望这个类是一个数据类<br>当一个类中没有任何代码时，可以将大括号省略。</p>
+<p>单例类<br>用于保证某个类在全局最多只能拥有一个实例，不同于Java中实现单例模式的方式，在 Kotlin 中实现非常简单。<br>Kotlin中创建单例类，创建类型选择“Object”，示例代码如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> Singleton{</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">singletonTest</span><span class="params">()</span></span>{</span><br><span class="line">        println(<span class="string">"SingeltonTest is called"</span>)</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">//调用单例类中的函数</span></span><br><span class="line">Singleton.singletonTest()</span><br></pre></td></tr></tbody></table></div></figure>
+
+<p>更多文章：<br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6891231633702125576">Kotlin学习知识点整理-基础篇-01</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6891260438219227143">Kotlin学习知识点整理-基础篇-02</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6891621855204786184">Kotlin学习知识点整理-基础篇-03</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6892393981695819789">Kotlin学习知识点整理-进阶篇-04</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<blockquote>
+<p>写在最后：遨游在知识的海洋，永远对技术怀有一个敬畏之心</p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://example.com">MuppetWizard</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://example.com/2021/03/06/%E7%AC%AC%E4%B8%80%E4%B8%80%E7%AF%87/">http://example.com/2021/03/06/%E7%AC%AC%E4%B8%80%E4%B8%80%E7%AF%87/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://s3.ax1x.com/2021/03/07/6uje7d.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://s3.ax1x.com/2021/03/07/6ujutI.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2021/03/06/hello-world/"><span class="paginator-prev__text">Hello World</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kotlin%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="toc-number">1.</span> <span class="toc-text">
+          Kotlin学习-基础篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1、变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%BB%B6%E8%BF%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.1.1.</span> <span class="toc-text">
+          变量延迟初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">
+          2、函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81if-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.3.</span> <span class="toc-text">
+          3、if 条件语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81when-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.4.</span> <span class="toc-text">
+          4、when 条件语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.5.</span> <span class="toc-text">
+          5、循环语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4"><span class="toc-number">1.5.1.</span> <span class="toc-text">
+          区间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for-in-%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.5.2.</span> <span class="toc-text">
+          for-in 循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.6.</span> <span class="toc-text">
+          6、面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.6.1.</span> <span class="toc-text">
+          类与对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E6%9E%84%E9%80%A0%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.6.2.</span> <span class="toc-text">
+          类与构造对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.6.3.</span> <span class="toc-text">
+          接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">1.6.4.</span> <span class="toc-text">
+          修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E4%B8%8E%E5%8D%95%E4%BE%8B%E7%B1%BB"><span class="toc-number">1.6.5.</span> <span class="toc-text">
+          数据类与单例类</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">无限进步</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/MuppetWizard/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://juejin.cn/user/4054654616603725/" target="_blank" rel="noopener" data-popover="掘金" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">掘金</span></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>MuppetWizard</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-inner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (true) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'http://example.com/2021/03/06/%E7%AC%AC%E4%B8%80%E4%B8%80%E7%AF%87/', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '434e609be832396bf5b8',
+    clientSecret: '224445f45507a34ee716a374768bb8d89c04d954',
+    repo: 'MuppetWizard.github.io',
+    owner: 'MuppetWizard',
+    admin: ['MuppetWizard'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
