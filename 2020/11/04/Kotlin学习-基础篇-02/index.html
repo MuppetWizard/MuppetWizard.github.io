@@ -1,0 +1,554 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="De8UUrQEHuEf3l4CkcC-iVi6y4tdy5Wsm_i9Zp4vGsA"><meta name="baidu-site-verification" content="code-JOGGtDcVxs"><meta name="description" content="Lambda编程 集合的创建与遍历 集合函数式 API 常用函数式 API maxBy() map() filter() any() all() Java 函数式 API 空指针检查 ? 操作符 ?. 操作符...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin学习-基础篇-02">
+<meta property="og:url" content="https://muppetwizard.github.io/2020/11/04/Kotlin%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%AF%87-02/index.html">
+<meta property="og:site_name" content="Muppet&#39;s Blog">
+<meta property="og:description" content="Lambda编程 集合的创建与遍历 集合函数式 API 常用函数式 API maxBy() map() filter() any() all() Java 函数式 API 空指针检查 ? 操作符 ?. 操作符...">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cadc0205934a440cb769ef810dac9eb1~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2020-11-04T11:50:00.000Z">
+<meta property="article:modified_time" content="2021-03-07T16:30:29.841Z">
+<meta property="article:author" content="MuppetWizard">
+<meta property="article:tag" content="kotlin">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="阅读">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cadc0205934a440cb769ef810dac9eb1~tplv-k3u1fbpfcp-watermark.image"><title>Kotlin学习-基础篇-02 | Muppet's Blog</title><link ref="canonical" href="https://muppetwizard.github.io/2020/11/04/Kotlin%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%AF%87-02/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=G-QCPWF6B705" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-QCPWF6B705');
+}</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?3be6c08b7936bf2dbf55bc9e8b1628cf';
+  hm.async = true;
+
+  if (true) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-map-signs"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/gallery/"><span class="header-nav-menu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-menu-item__text">画廊</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-hand-point-down"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/author/"><span class="header-nav-submenu-item__icon"><i class="fas fa-at"></i></span><span class="header-nav-submenu-item__text">作者</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/friendLinks/"><span class="header-nav-menu-item__icon"><i class="fas fa-users"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Kotlin学习-基础篇-02</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-11-04</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-03-08</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.5k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">9分</span></span></div></header><div class="post-body"><p>
+        <img class="lazyload lazyload-gif" src="/images/loading.svg" data-src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cadc0205934a440cb769ef810dac9eb1~tplv-k3u1fbpfcp-watermark.image">
+      </p>
+
+        <h1 id="Lambda编程">
+          <a href="#Lambda编程" class="heading-link"><i class="fas fa-link"></i></a><a href="#Lambda编程" class="headerlink" title="Lambda编程"></a>Lambda编程</h1>
+      <blockquote>
+<p>本文是我在学习Kotlin的过程中记录的一些知识点，如有错误，欢迎指正</p>
+</blockquote>
+
+        <h2 id="集合的创建与遍历">
+          <a href="#集合的创建与遍历" class="heading-link"><i class="fas fa-link"></i></a><a href="#集合的创建与遍历" class="headerlink" title="集合的创建与遍历"></a>集合的创建与遍历</h2>
+      <p><strong>List集合</strong><br>使用Kotlin内置的 <code>listof()</code> 简化初始化集合，示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="string">"Apple"</span>,<span class="string">"Banana"</span>,<span class="string">"Orange"</span>,<span class="string">"Pear"</span>,<span class="string">"Grape"</span>)</span><br></pre></td></tr></tbody></table></div></figure>
+<p><code>listOf()</code>创建的是一个不可变集合，不可变集合指只能用于读取，不能进行添加、修改、删除等操作<br>使用 <code>mutableListOf()</code> 函数创建可变集合，示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = mutableListOf(<span class="string">"Apple"</span>,<span class="string">"Banana"</span>,<span class="string">"Orange"</span>,<span class="string">"Pear"</span>,<span class="string">"Grape"</span>)</span><br><span class="line">list.add(<span class="string">"Watermelon"</span>) <span class="comment">//可以进行添加等操作</span></span><br></pre></td></tr></tbody></table></div></figure>
+
+<p><strong>Set集合</strong><br><code>set</code>集合的创建和List类似，也有 <code>setOf()</code> 和 <code>muatbleSetOf()</code>,使用方法相同。<br><code>set</code>集合底层时使用hash映射机制来存放数据的，因此集合中各大元素无法保证有序</p>
+<p><strong>Map集合</strong><br><code>Map</code>集合是一种键值对形式的数据结构<br>Kotlin中不建议使用<code>put()</code>和<code>get()</code>方法来对Map进行添加和读取数据操作<br><code>Msp</code>集合基础实现，如下:</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> map = HashMap&lt;String,<span class="built_in">Int</span>&gt;</span><br><span class="line">map[<span class="string">"Apple"</span>] = <span class="number">1</span></span><br><span class="line">map[<span class="string">"Banana"</span>] = <span class="number">2</span></span><br><span class="line">...</span><br></pre></td></tr></tbody></table></div></figure>
+<p><code>mapOf()</code>和<code>mutableMapOf()</code>使用和前面一致，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> map = mapOf(<span class="string">"Apple"</span> to <span class="number">1</span>, <span class="string">"Banana"</span> to <span class="number">2</span>, ...)</span><br></pre></td></tr></tbody></table></div></figure>
+<p>注，<code>to</code>不是关键字，而是一个<code>infix</code>函数</p>
+
+        <h2 id="集合函数式-API">
+          <a href="#集合函数式-API" class="heading-link"><i class="fas fa-link"></i></a><a href="#集合函数式-API" class="headerlink" title="集合函数式 API"></a>集合函数式 API</h2>
+      <p><code>Lambda</code>就是一小段可以作为参数传递的代码<br>语法结构如下：</p>
+<figure class="highlight plain"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{参数名1:参数类型, 参数名2:参数类型 -&gt; 函数体}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>解释：如果有参数传入到 Lambda 表达式中的话，需要声明参数列表，参数列表结尾使用一个 <code>-&gt;</code> 符号，表示参数列表的结束以及函数体的开始，函数体中最后一行代码为自动作为 Lambda 表达式的返回值<br>示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> maxLengthString = list.maxBy({string:String -&gt; string.length})</span><br></pre></td></tr></tbody></table></div></figure>
+<p>1、当Lambda参数是函数的最后一个参数时，可将Lambda表达式移到函数括号的外面<br>2、当Lambda参数是函数的唯一一个参数时，可将括号省略<br>3、当Lambda表达式的参数列表中只有一个参数时，可不必声明参数名，可以使用it关键字代替<br>最后如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> maxLengthString = list.maxBy{it.length}</span><br></pre></td></tr></tbody></table></div></figure>
+
+        <h3 id="常用函数式-API">
+          <a href="#常用函数式-API" class="heading-link"><i class="fas fa-link"></i></a><a href="#常用函数式-API" class="headerlink" title="常用函数式 API"></a>常用函数式 API</h3>
+      
+        <h4 id="maxBy">
+          <a href="#maxBy" class="heading-link"><i class="fas fa-link"></i></a><a href="#maxBy" class="headerlink" title="maxBy()"></a>maxBy()</h4>
+      <p>接收一个 Lambda 类型参数，在遍历集合时将每次遍历的值作为参数传给 Lambda 表达式。<br>根据我们传入的条件来遍历集合，从而找到该条件下的最大值<br>示例，找到集合中字符串最长的一个：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> maxLengthString = list.maxBy{it.length}</span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h4 id="map">
+          <a href="#map" class="heading-link"><i class="fas fa-link"></i></a><a href="#map" class="headerlink" title="map()"></a>map()</h4>
+      <p>接收一个 Lambda 类型参数，将集合中的每个元素都映射成一个另外的值，映射的规则在 Lambda 表达式中指定，最终生成一个新的集合。<br>示例：将集合中的字母都变成大写：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> upperCase = list.map{it.toUpperCase() }</span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h4 id="filter">
+          <a href="#filter" class="heading-link"><i class="fas fa-link"></i></a><a href="#filter" class="headerlink" title="filter()"></a>filter()</h4>
+      <p>用于过滤集合中的数据可单独使用，也可配合其他函数（如<code>map</code>函数）一起使用<br>示例，保留5个字母以内的单词：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newList = list.filter{it.length &lt;= <span class="number">5</span> }</span><br><span class="line">                  .map{it.toUpperCase() }</span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h4 id="any">
+          <a href="#any" class="heading-link"><i class="fas fa-link"></i></a><a href="#any" class="headerlink" title="any()"></a>any()</h4>
+      <p>用于判断集合中是否至少存在一个元素满足条件<br>示例，是否存在5个字母以内的单词</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="string">"Apple"</span>,<span class="string">"Banana"</span>,<span class="string">"Orange"</span>,<span class="string">"Pear"</span>,<span class="string">"Grape"</span>)</span><br><span class="line"><span class="keyword">var</span> anyResult = list.any{it.length &lt;=<span class="number">5</span> }</span><br><span class="line"><span class="comment">//运行结果为 true</span></span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h4 id="all">
+          <a href="#all" class="heading-link"><i class="fas fa-link"></i></a><a href="#all" class="headerlink" title="all()"></a>all()</h4>
+      <p>用于判断集合中是否所有元素都满足指定条件<br>示例，是否所有单词都在5个字母以内</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> list = listOf(<span class="string">"Apple"</span>,<span class="string">"Banana"</span>,<span class="string">"Orange"</span>,<span class="string">"Pear"</span>,<span class="string">"Grape"</span>)</span><br><span class="line"><span class="keyword">var</span> anyResult = list.all{it.length &lt;=<span class="number">5</span> }</span><br><span class="line"><span class="comment">//运行结果为 false</span></span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h2 id="Java-函数式-API">
+          <a href="#Java-函数式-API" class="heading-link"><i class="fas fa-link"></i></a><a href="#Java-函数式-API" class="headerlink" title="Java 函数式 API"></a>Java 函数式 API</h2>
+      <p>当在 Kotlin 中调用一个 Java 方法，并且该方法接收一个<strong>Java单抽象方法接口参数</strong>，就可使用函数式 API<br>示例，Java 中最常见的单抽象方法接口–<code>Runnable</code>接口，在 Kotlin 中的写法如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thread(<span class="keyword">object</span> : Runnable{  <span class="comment">//创建匿名类实例改用object关键字</span></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">run</span><span class="params">()</span></span>{....}</span><br><span class="line">}).start()</span><br></pre></td></tr></tbody></table></div></figure>
+<p>因为 Thread 类的构造方法符合 Java 函数式 API 的使用条件，可简化为：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thread(Runnable {  <span class="comment">//Runnable类中只有一个待实现方法，故可不显示重写run()方法</span></span><br><span class="line">    ....</span><br><span class="line">}).start()</span><br></pre></td></tr></tbody></table></div></figure>
+<p>当一个 Java 方法的<strong>参数列表不存在一个以上 Java 单抽象方法接口</strong>时可以将接口名省略，如下所示：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread{....}.start()</span><br></pre></td></tr></tbody></table></div></figure>
+<p>Android 中最为常用的 Java 单抽象方法接口，<code>OnClickListener</code>，在 Kotlin 中可这样写：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">button.setOnClickListener{.....}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>Java 函数式 API 的使用都<strong>仅限于从 Kotlin 中调用 Java 方法，并且单抽象方法接口也是用 Java 定义</strong>的。</p>
+
+        <h2 id="空指针检查">
+          <a href="#空指针检查" class="heading-link"><i class="fas fa-link"></i></a><a href="#空指针检查" class="headerlink" title="空指针检查"></a>空指针检查</h2>
+      
+        <h3 id="操作符">
+          <a href="#操作符" class="heading-link"><i class="fas fa-link"></i></a><a href="#操作符" class="headerlink" title="? 操作符"></a><code>?</code> 操作符</h3>
+      <p> Kotlin 中<strong>默认所有参数和变量都不可为空。</strong><br>可为空类型系统可以让需要的变量或参数为空，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> int:<span class="built_in">Int</span>?</span><br><span class="line"><span class="keyword">var</span> string:String?</span><br><span class="line"><span class="keyword">var</span> c:ClassName?</span><br></pre></td></tr></tbody></table></div></figure>
+<p> <code>?</code> 符号表示该类型的变量可为空<br><strong>注意，使用可为空类型的参数或变量时需将空指针异常进行处理</strong></p>
+
+        <h3 id="操作符-1">
+          <a href="#操作符-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#操作符-1" class="headerlink" title="?. 操作符"></a><code>?.</code> 操作符</h3>
+      <p>结合上述的 <code>?</code> 操作符一起使用时，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">doSomething</span><span class="params">(study:<span class="type">Study</span>?)</span></span>{</span><br><span class="line">    study?.doHomework()</span><br><span class="line">    study?.readBook()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>当对象不为空时正常调用相应方法，为空时什么都不做  </p>
+
+        <h3 id="操作符-2">
+          <a href="#操作符-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#操作符-2" class="headerlink" title="?: 操作符"></a><code>?:</code> 操作符</h3>
+      <p>这个操作符左右两边都接收一个表达式，如果<strong>左边的表达式不为空则返回左边的结果</strong>，<strong>否则返回右边的表达式的结果</strong>，示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="keyword">if</span>(a! = <span class="literal">null</span>){</span><br><span class="line">    a</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">    b</span><br><span class="line">}</span><br><span class="line"><span class="comment">//以上运用?:操作符可简化为</span></span><br><span class="line"><span class="keyword">var</span> c = a ?: b</span><br></pre></td></tr></tbody></table></div></figure>
+<p>将 ?. 和 ?: 结合使用，示例如下</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">getTextLength</span><span class="params">(text:<span class="type">String</span>?)</span></span> = text?.length() ?: <span class="number">0</span></span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h3 id="非空断言工具">
+          <a href="#非空断言工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#非空断言工具" class="headerlink" title="非空断言工具 !!"></a>非空断言工具 <code>!!</code></h3>
+      <p>在一些情况下，当你非常确定变量不会为空时，为了通过编译器的限制，在对象后面加上 <code>!!</code> 可断言该对象不为空，强行通过编译</p>
+<p>更多文章：<br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6891231633702125576">Kotlin学习知识点整理-基础篇-01</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6891260438219227143">Kotlin学习知识点整理-基础篇-02</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6891621855204786184">Kotlin学习知识点整理-基础篇-03</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6892393981695819789">Kotlin学习知识点整理-进阶篇-04</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<blockquote>
+<p>写在最后<br>分享一些话：有些时候，当你所处的环境，都像一艘船一样沉下去的时候，你仍需知道，你最大，最优先的责任，是要先救起你自己</p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://muppetwizard.github.io">MuppetWizard</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://muppetwizard.github.io/2020/11/04/Kotlin%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%AF%87-02/">https://muppetwizard.github.io/2020/11/04/Kotlin%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%AF%87-02/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://muppetwizard.github.io/tags/kotlin/">kotlin</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://muppetwizard.github.io/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://muppetwizard.github.io/tags/%E9%98%85%E8%AF%BB/">阅读</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://s3.ax1x.com/2021/03/07/6uje7d.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://s3.ax1x.com/2021/03/07/6ujutI.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/05/Kotlin%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%AF%87-03/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Kotlin学习-基础篇-03</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/04/Kotlin%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%AF%87-01/"><span class="paginator-prev__text">Kotlin学习-基础篇-01</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lambda%E7%BC%96%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">
+          Lambda编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E9%81%8D%E5%8E%86"><span class="toc-number">1.1.</span> <span class="toc-text">
+          集合的创建与遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E5%87%BD%E6%95%B0%E5%BC%8F-API"><span class="toc-number">1.2.</span> <span class="toc-text">
+          集合函数式 API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E5%BC%8F-API"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          常用函数式 API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#maxBy"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">
+          maxBy()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#map"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">
+          map()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#filter"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">
+          filter()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#any"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">
+          any()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#all"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">
+          all()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%87%BD%E6%95%B0%E5%BC%8F-API"><span class="toc-number">1.3.</span> <span class="toc-text">
+          Java 函数式 API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88%E6%A3%80%E6%9F%A5"><span class="toc-number">1.4.</span> <span class="toc-text">
+          空指针检查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">1.4.1.</span> <span class="toc-text">
+          ? 操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6-1"><span class="toc-number">1.4.2.</span> <span class="toc-text">
+          ?. 操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6-2"><span class="toc-number">1.4.3.</span> <span class="toc-text">
+          ?: 操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E7%A9%BA%E6%96%AD%E8%A8%80%E5%B7%A5%E5%85%B7"><span class="toc-number">1.4.4.</span> <span class="toc-text">
+          非空断言工具 !!</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://s3.ax1x.com/2021/03/07/6MyLpq.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">无限进步</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/MuppetWizard/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://juejin.cn/user/4054654616603725/" target="_blank" rel="noopener" data-popover="掘金" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">掘金</span></a><a class="sidebar-ov-social-item" href="https://www.jianshu.com/u/369839f4bf48" target="_blank" rel="noopener" data-popover="简书" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">简</span></a><a class="sidebar-ov-social-item" href="https://blog.csdn.net/qq_42264343" target="_blank" rel="noopener" data-popover="CSDN" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">CSDN</span></a><a class="sidebar-ov-social-item" href="mailto:811583783@qq.com" target="_blank" rel="noopener" data-popover="QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">QQ 邮箱</span></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>MuppetWizard</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div>Hosted by <a href="https://pages.github.com/" rel="noopener" target="_blank">Github Pages</a></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-inner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (true) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'https://muppetwizard.github.io/2020/11/04/Kotlin%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%AF%87-02/', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '434e609be832396bf5b8',
+    clientSecret: '224445f45507a34ee716a374768bb8d89c04d954',
+    repo: 'MuppetWizard.github.io',
+    owner: 'MuppetWizard',
+    admin: ['MuppetWizard'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>

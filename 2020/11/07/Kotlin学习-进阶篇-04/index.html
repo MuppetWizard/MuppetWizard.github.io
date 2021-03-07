@@ -1,0 +1,508 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="google-site-verification" content="De8UUrQEHuEf3l4CkcC-iVi6y4tdy5Wsm_i9Zp4vGsA"><meta name="baidu-site-verification" content="code-JOGGtDcVxs"><meta name="description" content="Kotlin知识点整理进阶 一、字符串内嵌表达式 二、函数的参数默认值 三、定义静态方法 1、单例类 2、companion object 3、注解：@JvmStatic 4、顶层方法 四、密封类 五、扩展函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin学习-进阶篇-04">
+<meta property="og:url" content="https://muppetwizard.github.io/2020/11/07/Kotlin%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6%E7%AF%87-04/index.html">
+<meta property="og:site_name" content="Muppet&#39;s Blog">
+<meta property="og:description" content="Kotlin知识点整理进阶 一、字符串内嵌表达式 二、函数的参数默认值 三、定义静态方法 1、单例类 2、companion object 3、注解：@JvmStatic 4、顶层方法 四、密封类 五、扩展函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac070a7c9c2a45369fe732e7f887723d~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2020-11-07T11:50:00.000Z">
+<meta property="article:modified_time" content="2021-03-07T16:31:48.915Z">
+<meta property="article:author" content="MuppetWizard">
+<meta property="article:tag" content="kotlin">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="阅读">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac070a7c9c2a45369fe732e7f887723d~tplv-k3u1fbpfcp-watermark.image"><title>Kotlin学习-进阶篇-04 | Muppet's Blog</title><link ref="canonical" href="https://muppetwizard.github.io/2020/11/07/Kotlin%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6%E7%AF%87-04/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="dns-prefetch" href="https://hm.baidu.com"><script src="https://www.googletagmanager.com/gtag/js?id=G-QCPWF6B705" async="" data-pjax=""></script><script data-pjax="">if (window.location.hostname !== 'localhost') {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-QCPWF6B705');
+}</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement('script');
+  hm.src = 'https://hm.baidu.com/hm.js?3be6c08b7936bf2dbf55bc9e8b1628cf';
+  hm.async = true;
+
+  if (true) {
+    hm.setAttribute('data-pjax', '');
+  }
+  var s = document.getElementsByTagName('script')[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();</script><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: true,
+  fancybox: true,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: {"colWidth":"220px","gapX":"10px"},
+  lazyload: true,
+  pjax: {"avoidBanner":false},
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-feather-alt"></i></span><span class="header-nav-menu-item__text">文章</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/archives/"><span class="header-nav-submenu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-submenu-item__text">归档</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/categories/"><span class="header-nav-submenu-item__icon"><i class="fas fa-map-signs"></i></span><span class="header-nav-submenu-item__text">分类</span></a></div><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/tags/"><span class="header-nav-submenu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-submenu-item__text">标签</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/gallery/"><span class="header-nav-menu-item__icon"><i class="fas fa-images"></i></span><span class="header-nav-menu-item__text">画廊</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="javascript:;" onclick="return false;"><span class="header-nav-menu-item__icon"><i class="fas fa-hand-point-down"></i></span><span class="header-nav-menu-item__text">关于</span></a><div class="header-nav-submenu"><div class="header-nav-submenu-item"><a class="header-nav-submenu-item__link" href="/author/"><span class="header-nav-submenu-item__icon"><i class="fas fa-at"></i></span><span class="header-nav-submenu-item__text">作者</span></a></div></div></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/friendLinks/"><span class="header-nav-menu-item__icon"><i class="fas fa-users"></i></span><span class="header-nav-menu-item__text">友链</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Kotlin学习-进阶篇-04</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-11-07</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-03-08</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.1k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">7分</span></span></div></header><div class="post-body"><p>
+        <img class="lazyload lazyload-gif" src="/images/loading.svg" data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac070a7c9c2a45369fe732e7f887723d~tplv-k3u1fbpfcp-watermark.image">
+      </p>
+
+        <h1 id="Kotlin知识点整理进阶">
+          <a href="#Kotlin知识点整理进阶" class="heading-link"><i class="fas fa-link"></i></a><a href="#Kotlin知识点整理进阶" class="headerlink" title="Kotlin知识点整理进阶"></a>Kotlin知识点整理进阶</h1>
+      <blockquote>
+<p>本文是我在学习Kotlin的过程中整理的一些知识点，如有错误，欢迎指正</p>
+</blockquote>
+
+        <h2 id="一、字符串内嵌表达式">
+          <a href="#一、字符串内嵌表达式" class="heading-link"><i class="fas fa-link"></i></a><a href="#一、字符串内嵌表达式" class="headerlink" title="一、字符串内嵌表达式"></a>一、字符串内嵌表达式</h2>
+      <p>语法规则：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"hello <span class="subst">${obj.name}</span>, nice to meet you"</span></span><br></pre></td></tr></tbody></table></div></figure>
+<p>当表达式中只有一个变量时可将 <code>{}</code> 大括号省去</p>
+
+        <h2 id="二、函数的参数默认值">
+          <a href="#二、函数的参数默认值" class="heading-link"><i class="fas fa-link"></i></a><a href="#二、函数的参数默认值" class="headerlink" title="二、函数的参数默认值"></a>二、函数的参数默认值</h2>
+      <p>示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给第二个参数赋默认值</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printParam</span><span class="params">(num:<span class="type">Int</span>,str:<span class="type">String</span> = <span class="string">"hello"</span>)</span></span>{</span><br><span class="line">    println(<span class="string">"num is <span class="variable">$num</span>, str is <span class="variable">$str</span>"</span>)</span><br><span class="line">}</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">printParam(<span class="number">123</span>)</span><br></pre></td></tr></tbody></table></div></figure>
+<p>因为 <code>str</code> 参数已经有了一个默认值 <code>”hello“</code> 所以<strong>当调用时不传</strong>第二个参数的话便会使用该参数的默认值</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给第一个参数赋默认值时</span></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">printParam</span><span class="params">(num:<span class="type">Int</span> = <span class="number">123</span>, str:<span class="type">String</span>)</span></span>{</span><br><span class="line">    println(<span class="string">"num is <span class="variable">$num</span>, str is <span class="variable">$str</span>"</span>)</span><br><span class="line">}</span><br><span class="line"><span class="comment">//调用 </span></span><br><span class="line">printParam(str = <span class="string">"hello"</span>)</span><br></pre></td></tr></tbody></table></div></figure>
+
+
+        <h2 id="三、定义静态方法">
+          <a href="#三、定义静态方法" class="heading-link"><i class="fas fa-link"></i></a><a href="#三、定义静态方法" class="headerlink" title="三、定义静态方法"></a>三、定义静态方法</h2>
+      
+        <h3 id="1、单例类">
+          <a href="#1、单例类" class="heading-link"><i class="fas fa-link"></i></a><a href="#1、单例类" class="headerlink" title="1、单例类"></a>1、单例类</h3>
+      <p>示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> Util{</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">doAction</span><span class="params">()</span></span>{</span><br><span class="line">        println(<span class="string">"do action"</span>)</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">//调用方法</span></span><br><span class="line">Util.doAction</span><br></pre></td></tr></tbody></table></div></figure>
+<p>事实上这里的 <code>doAction()</code> 并不是真正意义上静态方法，使用单例类的写法会将整个类中的所有方法<strong>全部变成类似于静态方法</strong>的调用方式。</p>
+
+        <h3 id="2、companion-object">
+          <a href="#2、companion-object" class="heading-link"><i class="fas fa-link"></i></a><a href="#2、companion-object" class="headerlink" title="2、companion object"></a>2、companion object</h3>
+      <p>示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Util</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">doAction1</span><span class="params">()</span></span>{</span><br><span class="line">        println(<span class="string">"do action 1"</span>)</span><br><span class="line">    }</span><br><span class="line">    companinon <span class="keyword">object</span>{</span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">doAction2</span><span class="params">()</span></span>{</span><br><span class="line">            println(<span class="string">"do action 2"</span>)</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p><code>doAction1()</code> 方法是一定要先创建 <code>Util</code> 类的实例才能调用， <code>doAction2()</code> 方法可以直接使用<code>Util.doAction2()</code> 方式调用<br>TIps：<code>doAction2()</code> 方法其实也并不是静态方法，<code>companinon object</code> 这个关键字实际上会在 <code>Util</code> 类的内部创建一个伴生类，而 <code>doAction2()</code>方法就是定义在这个伴生类中的实例方法，Kotlin会保证 <code>Util</code> 类始终只会存在一个伴生类对象，所以实际上就是调用了 <code>Util</code> 类中伴生对象的<code>doAction2()</code>方法</p>
+
+        <h3 id="3、注解：-JvmStatic">
+          <a href="#3、注解：-JvmStatic" class="heading-link"><i class="fas fa-link"></i></a><a href="#3、注解：-JvmStatic" class="headerlink" title="3、注解：@JvmStatic"></a>3、注解：@JvmStatic</h3>
+      <p>Kotlin 编译器会将使用该注解的方法编译成真正的静态方法，示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Util</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">fun</span> <span class="title">doAction1</span><span class="params">()</span></span>{</span><br><span class="line">        println(<span class="string">"do action 1"</span>)</span><br><span class="line">    }</span><br><span class="line">    companinon <span class="keyword">object</span>{</span><br><span class="line">        <span class="meta">@JvmStatic</span>  <span class="comment">//该注解只能加在单例类或 companion object 中的方法上</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">doAction2</span><span class="params">()</span></span>{</span><br><span class="line">            println(<span class="string">"do action 2"</span>)</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>现在 <code>doAction2()</code> 方法已经是真正的静态方法了，现在不管在Java或是Kotlin中都可以使用 <code>Util.doAction2()</code>的写法来调用</p>
+
+        <h3 id="4、顶层方法">
+          <a href="#4、顶层方法" class="heading-link"><i class="fas fa-link"></i></a><a href="#4、顶层方法" class="headerlink" title="4、顶层方法"></a>4、顶层方法</h3>
+      <p><strong>Kotlin 编译器会将所有的顶层方法全部编译成静态方法，故只要定义了一个顶层方法，那么它就一定是静态方法。</strong><br>创建方法：<br>1、创建 Kotlin 文件，创建类型要选择File。<br>2、在创建的文件中定义一个方法，如 <code>doSomething()</code> 方法，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">doSomething</span><span class="params">()</span></span>{</span><br><span class="line">    println(<span class="string">"do something"</span>)</span><br><span class="line">}</span><br><span class="line"><span class="comment">//在Kotlin中调用</span></span><br><span class="line">doSomething()</span><br><span class="line"><span class="comment">//在java中调用</span></span><br><span class="line">FileNameKt.doSomething()</span><br></pre></td></tr></tbody></table></div></figure>
+<p>Kotlin 编译器会自动创建一个叫做 <code>FileNameKt</code> 的Java类</p>
+
+        <h2 id="四、密封类">
+          <a href="#四、密封类" class="heading-link"><i class="fas fa-link"></i></a><a href="#四、密封类" class="headerlink" title="四、密封类"></a>四、密封类</h2>
+      <p>为了解决由于要满足编译器的要求而编写无用的条件分支的情况，在Kotlin中可使用密封类<br>密封类关键字是：<code>sealed class</code>  示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sealed</span> <span class="class"><span class="keyword">class</span> <span class="title">Result</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Success</span></span>(<span class="keyword">val</span> msg:String) : Result()</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Failed</span></span>(<span class="keyword">val</span> error:Exception) : Result()</span><br><span class="line"><span class="comment">//由于密封类是一个可继承类，因此在继承它时需要在后面加一对括号</span></span><br></pre></td></tr></tbody></table></div></figure>
+<p><strong>注意</strong>：密封类及其所有子类只能定义在同一文件的顶层位置</p>
+
+        <h2 id="五、扩展函数">
+          <a href="#五、扩展函数" class="heading-link"><i class="fas fa-link"></i></a><a href="#五、扩展函数" class="headerlink" title="五、扩展函数"></a>五、扩展函数</h2>
+      <p>扩展函数表示即使在不修改某个类的源码的情况下，任然可以打开这个类，向该类添加新函数<br>扩展函数语法结构，示例如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> className.<span class="title">methodName</span><span class="params">(params:<span class="type">Int</span>, params:<span class="type">Int</span>)</span></span> : <span class="built_in">Int</span>{</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></div></figure>
+<p>例子:统计字符串中的字母的数量，如下：</p>
+<figure class="highlight kotlin"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> String.<span class="title">letterCount</span><span class="params">()</span></span> : <span class="built_in">Int</span> {</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(char <span class="keyword">in</span> <span class="keyword">this</span>){</span><br><span class="line">        <span class="keyword">if</span>(char.isLetter()){</span><br><span class="line">            count++</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line">}</span><br><span class="line"><span class="keyword">var</span> count = <span class="string">"abcd12345EFG"</span>.letterCount()</span><br></pre></td></tr></tbody></table></div></figure>
+<p>更多文章：<br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6891231633702125576">Kotlin学习知识点整理-基础篇-01</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6891260438219227143">Kotlin学习知识点整理-基础篇-02</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6891621855204786184">Kotlin学习知识点整理-基础篇-03</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6892393981695819789">Kotlin学习知识点整理-进阶篇-04</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<blockquote>
+<p>写在最后<br>《一日重生》佳句分享：<br>I could barely make it move. But her arm went across my chest and I sensed her carrying me once more, air passing over my face. I saw only darkness, as if we were traveling behind the length of a curtain. The the dark pulled away and there were stars. Thousands of them. She was laying me down in wet grass, returning my ruined soul to this world.<br>我几乎不能动弹。但妈妈的手臂环绕着我，我再一次感觉她抱起了我，空气划过我的脸庞。我看到的只有黑暗，好像我们在一个长长的黑幕布后飞行。突然间，黑幕布拉开了，我的眼前出现了星星。成千上百的星星。她放下我，让我躺在湿漉漉的草地上，把我受伤的心还给这个世界。</p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://muppetwizard.github.io">MuppetWizard</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://muppetwizard.github.io/2020/11/07/Kotlin%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6%E7%AF%87-04/">https://muppetwizard.github.io/2020/11/07/Kotlin%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6%E7%AF%87-04/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://muppetwizard.github.io/tags/kotlin/">kotlin</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://muppetwizard.github.io/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://muppetwizard.github.io/tags/%E9%98%85%E8%AF%BB/">阅读</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><div class="post-reward reward"><div class="reward-button">请我喝杯咖啡~</div><div class="reward-qrcode"><span class="reward-qrcode-alipay"><img class="reward-qrcode-alipay__img" src="https://s3.ax1x.com/2021/03/07/6uje7d.jpg"><div class="reward-qrcode-alipay__text">支付宝打赏</div></span><span class="reward-qrcode-wechat"><img class="reward-qrcode-wechat__img" src="https://s3.ax1x.com/2021/03/07/6ujutI.png"><div class="reward-qrcode-wechat__text">微信打赏</div></span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/18/Jetpack%20%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%EF%BC%8C%E5%B8%A6%E4%BD%A0%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Jetpack 架构组件，带你快速上手</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/05/Kotlin%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E7%A1%80%E7%AF%87-03/"><span class="paginator-prev__text">Kotlin学习-基础篇-03</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kotlin%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%E8%BF%9B%E9%98%B6"><span class="toc-number">1.</span> <span class="toc-text">
+          Kotlin知识点整理进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%86%85%E5%B5%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">
+          一、字符串内嵌表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">1.2.</span> <span class="toc-text">
+          二、函数的参数默认值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%9A%E4%B9%89%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">
+          三、定义静态方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%8D%95%E4%BE%8B%E7%B1%BB"><span class="toc-number">1.3.1.</span> <span class="toc-text">
+          1、单例类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81companion-object"><span class="toc-number">1.3.2.</span> <span class="toc-text">
+          2、companion object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%B3%A8%E8%A7%A3%EF%BC%9A-JvmStatic"><span class="toc-number">1.3.3.</span> <span class="toc-text">
+          3、注解：@JvmStatic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E9%A1%B6%E5%B1%82%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.4.</span> <span class="toc-text">
+          4、顶层方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AF%86%E5%B0%81%E7%B1%BB"><span class="toc-number">1.4.</span> <span class="toc-text">
+          四、密封类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">
+          五、扩展函数</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://s3.ax1x.com/2021/03/07/6MyLpq.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">无限进步</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/MuppetWizard/" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://juejin.cn/user/4054654616603725/" target="_blank" rel="noopener" data-popover="掘金" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">掘金</span></a><a class="sidebar-ov-social-item" href="https://www.jianshu.com/u/369839f4bf48" target="_blank" rel="noopener" data-popover="简书" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">简</span></a><a class="sidebar-ov-social-item" href="https://blog.csdn.net/qq_42264343" target="_blank" rel="noopener" data-popover="CSDN" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">CSDN</span></a><a class="sidebar-ov-social-item" href="mailto:811583783@qq.com" target="_blank" rel="noopener" data-popover="QQmail" data-popover-pos="up"><span class="sidebar-ov-social-item__icon">QQ 邮箱</span></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>MuppetWizard</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div><div>Hosted by <a href="https://pages.github.com/" rel="noopener" target="_blank">Github Pages</a></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="120" alpha="0.6" zIndex="-1"></script><script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('DOMContentLoaded', function () {
+  var pjax = new Pjax({"selectors":["head title","#main",".pjax-reload",".header-inner"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    $('.header-nav-menu').removeClass('show');
+    if (CONFIG.pjax && CONFIG.pjax.avoidBanner) {
+      $('html').velocity('scroll', {
+        duration: 500,
+        offset: $('#header').height(),
+        easing: 'easeInOutCubic'
+      });
+    }
+
+    var loadingBarWidth = 20;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar').addClass('loading');
+    $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 3;
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+      $('.loading-bar__progress').css('width', loadingBarWidth + '%');
+    }, 500);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar__progress').css('width', '100%');
+    $('.loading-bar').removeClass('loading');
+    setTimeout(function () {
+      $('.loading-bar__progress').css('width', '0');
+    }, 400);
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    if (Stun.utils.pjaxReloadBoot) {
+      Stun.utils.pjaxReloadBoot();
+    }
+    if (Stun.utils.pjaxReloadScroll) {
+      Stun.utils.pjaxReloadScroll();
+    }
+    if (Stun.utils.pjaxReloadSidebar) {
+      Stun.utils.pjaxReloadSidebar();
+    }
+    if (true) {
+      if (Stun.utils.pjaxReloadHeader) {
+        Stun.utils.pjaxReloadHeader();
+      }
+      if (Stun.utils.pjaxReloadScrollIcon) {
+        Stun.utils.pjaxReloadScrollIcon();
+      }
+      if (Stun.utils.pjaxReloadLocalSearch) {
+        Stun.utils.pjaxReloadLocalSearch();
+      }
+    }
+  }, false);
+}, false);</script><div id="pjax-reload"><script src="https://cdn.jsdelivr.net/npm/quicklink@1.0.1/dist/quicklink.umd.js"></script><script>function initQuicklink() {
+  quicklink({
+    timeout: '10000',
+    priority: true,
+    ignores: [uri => uri.includes('#'), uri => uri === 'https://muppetwizard.github.io/2020/11/07/Kotlin%E5%AD%A6%E4%B9%A0-%E8%BF%9B%E9%98%B6%E7%AF%87-04/', /\/api\/?/,uri => uri.includes('.xml'),uri => uri.includes('.zip'),(uri, el) => el.hasAttribute('nofollow'),(uri, el) => el.hasAttribute('noprefetch')]
+  });
+}
+
+if (true || false) {
+  initQuicklink();
+} else {
+  window.addEventListener('DOMContentLoaded', initQuicklink, false);
+}</script></div><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js" data-pjax=""></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js" data-pjax=""></script><script data-pjax="">function loadGitalk () {
+  if (!document.getElementById('gitalk-container')) {
+    return;
+  }
+
+  var gitalk = new Gitalk({
+    id: md5(window.location.pathname.slice(1)),
+    clientID: '434e609be832396bf5b8',
+    clientSecret: '224445f45507a34ee716a374768bb8d89c04d954',
+    repo: 'MuppetWizard.github.io',
+    owner: 'MuppetWizard',
+    admin: ['MuppetWizard'],
+    distractionFreeMode: 'true',
+    language: 'zh-CN'
+  });
+  gitalk.render('gitalk-container');
+}
+
+if (true) {
+  loadGitalk();
+} else {
+  window.addEventListener('DOMContentLoaded', loadGitalk, false);
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
