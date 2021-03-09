@@ -7,7 +7,6 @@ tags:
     - 阅读
 categories: 
     - [Kotlin]
-top_image: https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/16bc39bfcece47bd96edee5511fb1ca8~tplv-k3u1fbpfcp-watermark.image
 excerpt: Kotlin知识点整理进阶 一、运算符重载 二、扩展函数 + 运算符重载使用示例 三、高阶函数 1、定义高阶函数 2、内联函数
 ---
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/16bc39bfcece47bd96edee5511fb1ca8~tplv-k3u1fbpfcp-watermark.image)

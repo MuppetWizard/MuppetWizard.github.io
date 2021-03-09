@@ -436,7 +436,7 @@ post_list:
     archives: false
   # Whether to show the cover image of post. 文章列表里的文章的封面图片
   cover_image:
-    home: true
+    home: false
 
 # The widget of post. 文章标签 
 post_widget:

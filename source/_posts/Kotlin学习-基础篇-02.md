@@ -8,7 +8,6 @@ tags:
 categories: 
     - [Kotlin]
 excerpt: Lambda编程 集合的创建与遍历 集合函数式 API 常用函数式 API maxBy() map() filter() any() all() Java 函数式 API 空指针检查 ? 操作符 ?. 操作符...
-top_image: https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cadc0205934a440cb769ef810dac9eb1~tplv-k3u1fbpfcp-watermark.image
 ---
 ![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cadc0205934a440cb769ef810dac9eb1~tplv-k3u1fbpfcp-watermark.image)
 # Lambda编程

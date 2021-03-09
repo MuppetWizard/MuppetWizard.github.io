@@ -9,7 +9,6 @@ categories:
     - [Android]
 
 excerpt: 1. Jetpack 2. ViewModel 2.1. 接下来简单使用一下： 2.2. 向 ViewModel 传递参数 3. Lifecycles 3.1. 简单使用： 4. LiveData 4.1. 简单使用 4.2. LiveData 中的 map 和 switchMap 4.2.1. map() 4.2.2. switchMap() 5. Room 5.1. Room 的具体用法 5.1.1. 定义 Entity： 5.1.2. 定义 Dao： 5.1.3. 定义 Database 5.1.4. Room 的数据库升级 6. WorkManager 6.1. 使用 WorkManager 处理复杂任务 6.2. 链式任务
-top_image: https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/93847c64524e486f929351c2dd8bb87f~tplv-k3u1fbpfcp-watermark.image
 ---
 ![](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/93847c64524e486f929351c2dd8bb87f~tplv-k3u1fbpfcp-watermark.image)
 # Jetpack

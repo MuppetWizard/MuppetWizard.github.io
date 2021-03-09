@@ -9,7 +9,6 @@ categories:
     - [Kotlin]
 
 excerpt: Kotlin知识点整理进阶 一、字符串内嵌表达式 二、函数的参数默认值 三、定义静态方法 1、单例类 2、companion object 3、注解：@JvmStatic 4、顶层方法 四、密封类 五、扩展函数
-top_image: https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac070a7c9c2a45369fe732e7f887723d~tplv-k3u1fbpfcp-watermark.image
 ---
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac070a7c9c2a45369fe732e7f887723d~tplv-k3u1fbpfcp-watermark.image)
 # Kotlin知识点整理进阶

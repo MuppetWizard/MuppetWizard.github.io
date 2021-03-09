@@ -9,7 +9,6 @@ categories:
     - [Kotlin]
 
 excerpt: Kotlin学习-基础篇 1、变量 1. 变量延迟初始化 2、函数 3、if 条件语句 4、when 条件语句 5、循环语句 5.1. 区间 5.2. for-in 循环 6、面向对象 6.1. 类与对象 6.2. 类与构造对象 6.3. 接口 6.4. 修饰符 6.5. 数据类与单例类
-top_image: https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b51ce98510514b319952f3713eba566c~tplv-k3u1fbpfcp-watermark.image
 # tags:  设置文章标签
 #  - PlayStation
 #  - Games

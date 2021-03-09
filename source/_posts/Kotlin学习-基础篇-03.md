@@ -8,7 +8,6 @@ tags:
 categories: 
     - [Kotlin]
 excerpt:  Kotlin 的内置扩展函数 1、let 2、with 3、run 4、apply 5、repeat
-top_image: https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d1aa72c86f8849039b9b4d4c87cf1bf2~tplv-k3u1fbpfcp-watermark.image
 ---
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d1aa72c86f8849039b9b4d4c87cf1bf2~tplv-k3u1fbpfcp-watermark.image)
 # Kotlin 的内置扩展函数
